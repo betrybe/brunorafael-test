@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+inventory_report.egg-info/PKG-INFO
+inventory_report.egg-info/SOURCES.txt
+inventory_report.egg-info/dependency_links.txt
+inventory_report.egg-info/entry_points.txt
+inventory_report.egg-info/top_level.txt

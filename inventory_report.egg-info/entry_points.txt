@@ -1,0 +1,3 @@
+[console_scripts]
+inventory_report = inventory_report.main:main
+
