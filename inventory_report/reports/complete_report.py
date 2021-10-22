@@ -14,7 +14,6 @@ class CompleteReport(SimpleReport):
         complete = CompleteReport()
         retorno = obj.generate(stock)
         retorno = retorno + complete.qtd_produto_by_empresa(stock)
-        #retorno = complete.qtd_produto_by_empresa(stock)
         return retorno
 
     def qtd_produto_by_empresa(self, stock):
@@ -27,14 +26,11 @@ class CompleteReport(SimpleReport):
             for produtoLista in self.stock:
                 if produtoLista['nome_da_empresa'] == nomeEmpresa:
                     qtdaux += 1
-                    
             self.adicionar_lista(nomeEmpresa, qtdaux)
-
-            #empresa = '- ' + nomeEmpresa + ' : ' + str(qtdaux)+'\n'
-            #retorno = retorno + ' ' + empresa
-            #empresa = ''
         for lista_empresa in self.lista:
-            empresa = empresa + '- ' + lista_empresa['nome'] + ': ' + lista_empresa['qtd']+'\n'
+            empresa = empresa + '- '
+            empresa = empresa + lista_empresa['nome'] + ': '
+            empresa = empresa + lista_empresa['qtd']+'\n'
 
         return retorno + empresa
 
@@ -57,8 +53,3 @@ class CompleteReport(SimpleReport):
                 if lista_aux['nome'] == self.nome:
                     retorno = False
             return retorno
-
-
-
-
-
