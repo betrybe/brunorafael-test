@@ -54,7 +54,6 @@ class Inventory:
         self.arquivo = arquivo
         self.tipo = tipo
         xml = ET.parse(self.arquivo)
-        print(self.arquivo)
         root = xml.getroot()
 
         for item in root.findall('record'):
