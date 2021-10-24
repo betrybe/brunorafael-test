@@ -11,13 +11,7 @@ def main():
     if len(sys.argv) == 3:
         _, arquivo, tp_relatorio = sys.argv
         extensao = verifica_tipo_arquivo(arquivo)
-        importer = ''
-        if extensao == '.csv':
-            importer = CsvImporter()
-        if extensao == '.json':
-            importer = JsonImporter()
-        if extensao == '.xml':
-            importer = XmlImporter()
+        importer = retornaImporter(extensao)
         if importer != '':
             inventoryRefactor = InventoryRefactor(importer)
             report = inventoryRefactor.import_data(arquivo, tp_relatorio)
@@ -30,3 +24,14 @@ def main():
 def verifica_tipo_arquivo(arquivo):
     arquivo = arquivo
     return os.path.splitext(arquivo)[1]
+
+
+def retornaImporter(extensao):
+    importer = ''
+    if extensao == '.csv':
+        importer = CsvImporter()
+    if extensao == '.json':
+        importer = JsonImporter()
+    if extensao == '.xml':
+        importer = XmlImporter()
+    return importer
