@@ -5,12 +5,14 @@ import csv
 class CsvImporter(Importer):
     stock = []
 
+    def __init__(self):
+        self.stock = []
+
     @staticmethod
     def import_data(nome_arquivo):
         csvImporter = CsvImporter()
         extensao = Importer.verifica_tipo_arquivo(nome_arquivo)
         if extensao == '.csv':
-            nome_arquivo = '../'+nome_arquivo
             with open(nome_arquivo, 'r') as arq:
                 reader = csv.DictReader(arq)
                 for row in reader:

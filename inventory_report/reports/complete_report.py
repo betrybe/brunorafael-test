@@ -6,7 +6,7 @@ class CompleteReport(SimpleReport):
     TITULO = "\nProdutos estocados por empresa: \n"
 
     def __init__(self):
-        pass
+        self.lista = []
 
     @staticmethod
     def generate(stock):
@@ -30,7 +30,7 @@ class CompleteReport(SimpleReport):
         for lista_empresa in self.lista:
             empresa = empresa + '- '
             empresa = empresa + lista_empresa['nome'] + ': '
-            empresa = empresa + lista_empresa['qtd']+'\n'
+            empresa = empresa + str(lista_empresa['qtd'])+'\n'
 
         return retorno + empresa
 
@@ -40,7 +40,7 @@ class CompleteReport(SimpleReport):
         if self.verifica_lista(self.nome):
             empresa_dic = {}
             empresa_dic['nome'] = self.nome
-            empresa_dic['qtd'] = str(self.qtd)
+            empresa_dic['qtd'] = self.qtd
             self.lista.append(empresa_dic)
 
     def verifica_lista(self, nome):

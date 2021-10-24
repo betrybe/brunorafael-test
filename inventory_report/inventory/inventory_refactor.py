@@ -15,18 +15,21 @@ class InventoryRefactor(Iterable):
     def __init__(self, importer):
         self.importer = importer
         self.data = []
+        self.stock = []
 
     def __iter__(self):
         return InventoryIterator(self.data)
 
     def import_data(self, arquivo, tp_relatorio):
-        self.data.extend(self.importer.import_data(arquivo))
+        self.arquivo = arquivo
+        self.tp_relatorio = tp_relatorio
+        self.data.extend(self.importer.import_data(self.arquivo))
         self.stock.clear()
-        extensao = self.verifica_tipo_arquivo(arquivo)
-        self.redirect(extensao, arquivo)
-        if len(self.stock) > 0 and tp_relatorio == 'simples':
+        extensao = self.verifica_tipo_arquivo(self.arquivo)
+        self.redirect(extensao, self.arquivo)
+        if len(self.stock) > 0 and self.tp_relatorio == 'simples':
             return self.relatorio_simples()
-        if len(self.stock) > 0 and tp_relatorio == 'completo':
+        if len(self.stock) > 0 and self.tp_relatorio == 'completo':
             return self.relatorio_completo()
 
     def verifica_tipo_arquivo(self, arquivo):

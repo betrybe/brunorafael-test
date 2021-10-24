@@ -17,7 +17,6 @@ class Inventory:
     @staticmethod
     def import_data(arquivo, tipo_relatorio):
         invetory = Inventory()
-        arquivo = '../'+arquivo
         invetory.stock.clear()
         extensao = invetory.verifica_tipo_arquivo(arquivo)
         invetory.redireciona_extensao(extensao, arquivo, tipo_relatorio)

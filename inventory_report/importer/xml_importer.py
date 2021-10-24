@@ -5,11 +5,13 @@ from inventory_report.importer.importer import Importer
 class XmlImporter(Importer):
     stock = []
 
+    def __init__(self):
+        self.stock = []
+
     @staticmethod
     def import_data(nome_arquivo):
         extensao = Importer.verifica_tipo_arquivo(nome_arquivo)
         if extensao == '.xml':
-            nome_arquivo = '../'+nome_arquivo
             xmlImporter = XmlImporter()
             xml = ET.parse(nome_arquivo)
             root = xml.getroot()
